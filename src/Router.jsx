@@ -5,47 +5,51 @@ import DiseaseInfo from "./components/DiseaseInfo.jsx";
 import BacteriaInfo from "./components/BacteriaInfo.jsx";
 
 import './Router.css'
+import './App.css'
 function Router() {
     return (
         <>
-            <div className='RouterDesign'>
             <BrowserRouter>
-                <ul>
-                            <li>
-                                <Link to="/">General Plots</Link>
-                            </li>
-                            <li>
-                                <Link to="/diseaseinfo">
-                                    Disease Info
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/bacteriainfo">
-                                    Bacteria Info
-                                </Link>
-                            </li>
-                </ul>
-                        <Routes>
-                            <Route
-                                exact
-                                path="/"
-                                element={<GeneralInfo/>}
-                            />
-                            <Route
-                                exact
-                                path="/diseaseinfo"
-                                element={<DiseaseInfo/>}
-                            />
-                            <Route
-                                exact
-                                path="/bacteriainfo"
-                                element={<BacteriaInfo/>}
-                            />
-                        </Routes>
+                <div className='RouterDesign'>
+                    <h3>Navigate to:</h3>
+                    <ul>
+                        <li>
+                            <Link to="/">View general plots for the project</Link>
+                        </li>
+                        <li>
+                            <Link to="/diseaseinfo">
+                                Search for a specific disease
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/bacteriainfo">
+                                Search for a specific bacteria
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+
+                <Routes>
+                        <Route
+                            exact
+                            path="/"
+                            element={<GeneralInfo/>}
+                        />
+                        <Route
+                            exact
+                            path="/diseaseinfo"
+                            element={<DiseaseInfo/>}
+                        />
+                        <Route
+                            exact
+                            path="/bacteriainfo"
+                            element={<BacteriaInfo/>}
+                        />
+                    </Routes>
             </BrowserRouter>
-            </div>
+
         </>
-    )
+)
 }
 
 export default Router

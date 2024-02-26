@@ -1,4 +1,7 @@
-.RouterDesign {
-    margin-left: 0;
-    margin-right: auto;
+.RouterDesign{
+    position: absolute;
+    top: 15%;
+    right: 0;
+    width: 300px;
+    padding: 10px;
 }

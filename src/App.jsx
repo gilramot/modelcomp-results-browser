@@ -3,8 +3,8 @@ import './App.css'
 function App() {
     return (
         <>
-            <div>
-                <center><h1 className='top'>modelcomp results browser</h1></center>
+            <div className='top'>
+                <h1>modelcomp results browser</h1>
             </div>
         </>
     )

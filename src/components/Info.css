@@ -1,0 +1,8 @@
+.graph {
+    width: 400px;
+    height: auto;
+}
+.graphTable {
+    position: absolute;
+    top:15%
+}
