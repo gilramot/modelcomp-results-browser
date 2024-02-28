@@ -5,6 +5,7 @@ function GeneralInfo() {
     return <>
         <div className='graphTable'>
         <table align={"left"}>
+            <tbody>
             <tr>
                 <td>
                     <h3>AUC</h3>
@@ -39,6 +40,7 @@ function GeneralInfo() {
                          src="https://raw.githubusercontent.com/gilramot/modelcomp-appendix/main/export/GENERAL%20PLOTS/correlation_heatmap_pr_auc.png"/>
                 </td>
             </tr>
+            </tbody>
         </table>
         </div>
     </>
