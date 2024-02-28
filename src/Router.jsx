@@ -11,7 +11,7 @@ function Router() {
         <>
             <BrowserRouter>
                 <div className='RouterDesign'>
-                    <h3>Navigate to:</h3>
+                    <h3>What would you like to do?</h3>
                     <ul>
                         <li>
                             <Link to="/">View general plots for the project</Link>

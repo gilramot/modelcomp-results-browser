@@ -1,8 +1,19 @@
-.graph {
-    width: 400px;
-    height: auto;
-}
-.graphTable {
+.graphTable
+{
     position: absolute;
-    top:15%
+    top:15%;
+    left:30%;
+    display: grid;
+    grid-template-columns: repeat(3,400px);
+    grid-template-rows: repeat(2,400px);
+    grid-gap:50px 30px;
+}
+
+.graph{
+    width: 350px;
+    height: auto;
+    padding: 20px;
+    font-size: 30px;
+    font-family: sans-serif;
+    color: white;
 }
