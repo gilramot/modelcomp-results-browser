@@ -13,10 +13,6 @@
     font-size:14px;
 }
 
-.active, .collapsible:hover {
-    background-color: #4e4e4e;
-}
-
 .content {
     padding: 0 18px;
     display: none;
@@ -35,11 +31,8 @@
 }
 .collapsible:after:after {
     visibility: hidden;
+    content: "\2796";
 }
 .collapsible:active:hover {
     background-color: #343434;
-}
-
-.active:after {
-    content: "\2796";
 }

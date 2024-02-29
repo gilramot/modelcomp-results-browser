@@ -1,24 +1,23 @@
 import './Legend.css'
-import { useState } from "react"
-
-function Legend() {
-    const [isActive, setIsActive] = useState(false);
-
-    const toggleCollapsible = () => {
-        setIsActive(!isActive);
-    };
+import Collapsible from 'react-collapsible';
+import {useCallback} from "react";
+import {Card} from './Card.jsx';
+function Legend({ onStateChange }) {
+    const handleClick = useCallback(event => {
+        onStateChange(event.target.value)
+    }, [onStateChange])
     return (
         <>
             <div style={{
                 position: "fixed",
-                top: "0",
+                top: "20%",
                 left: "0",
-                width: "350px",
+                width: "375px",
                 padding: "10px",
                 margin: "10px"
-            }}>
-                <button type='button' className={`collapsible${isActive ? ' active' : ''}`} onClick={toggleCollapsible}>Abbreviations & Disease keys</button>
-                <div className={`content:${isActive ? ' active' : ''}`} style={{position:"absolute", top:"180px", left:"5px", maxWidth:"350px", maxHeight: isActive ? 'none' : '100px' }}>
+            }} className='collapsible'>
+                <Collapsible trigger='Abbreviations & Disease keys' onTriggerOpening={handleClick} onTriggerClosing={handleClick}>
+
                     <h3>
                         Abbreviations:
                     </h3>
@@ -51,7 +50,7 @@ function Legend() {
                         </li>
                         <li>7 - Subjects with non-CAD related heart failure</li>
                     </ul>
-                </div>
+                </Collapsible>
             </div>
         </>
     )
