@@ -1,23 +1,20 @@
 import './Legend.css'
 import Collapsible from 'react-collapsible';
-import {useCallback} from "react";
-import {Card} from './Card.jsx';
-function Legend({ onStateChange }) {
-    const handleClick = useCallback(event => {
-        onStateChange(event.target.value)
-    }, [onStateChange])
+
+function hideCard() {
+    var cardElement = document.getElementById('card')
+    cardElement.style.opacity = 0;
+}
+function showCard() {
+    var cardElement = document.getElementById('card')
+    cardElement.style.opacity = 1;
+}
+
+function Legend() {
     return (
         <>
-            <div style={{
-                position: "fixed",
-                top: "20%",
-                left: "0",
-                width: "375px",
-                padding: "10px",
-                margin: "10px"
-            }} className='collapsible'>
-                <Collapsible trigger='Abbreviations & Disease keys' onTriggerOpening={handleClick} onTriggerClosing={handleClick}>
-
+            <div className='collapsible'>
+                <Collapsible trigger='Abbreviations & Disease keys&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' triggerClassName='collapsible_closed' triggerOpenedClassName='collapsible_open' onTriggerOpening={hideCard} onTriggerClosing={showCard}>
                     <h3>
                         Abbreviations:
                     </h3>

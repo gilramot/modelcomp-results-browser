@@ -1,5 +1,6 @@
 
 .card {
+    transition: opacity 0.5s ease-in-out;
     background-color: #1a1a1a;
     border: 1px solid hsl(0, 0%, 80%);
     border-radius: 10px;

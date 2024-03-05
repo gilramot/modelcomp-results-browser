@@ -7,10 +7,10 @@
     text-align: left;
     outline: none;
     position:fixed;
-    top:16%;
-    left:5px;
-    width:350px;
-    font-size:14px;
+    left:10px;
+    width:360px;
+    font-size:15px;
+    top:25%;
 }
 
 .content {
@@ -22,17 +22,11 @@
     transition: max-height 0.2s ease-out;
 }
 
-.collapsible:after {
+.collapsible_closed:after {
     content: '\02795';
-    font-size: 13px;
-    color: white;
     float: right;
-    margin-left: 5px;
 }
-.collapsible:after:after {
-    visibility: hidden;
-    content: "\2796";
-}
-.collapsible:active:hover {
-    background-color: #343434;
+.collapsible_open:after {
+    float:right;
+    content: '\2796';
 }

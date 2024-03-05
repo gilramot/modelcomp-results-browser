@@ -7,7 +7,7 @@ function Card() {
     const [isShown, setIsShown] = useState(false)
     return (
         <>
-            <div className="card" style={{visibility: isShown ? 'hidden' : 'visible' }}>
+            <div id='card' className="card" style={{visibility: isShown ? 'hidden' : 'visible' }}>
                 <img className="card-image" src={qrcode} alt="profile picture"></img>
                 <h2 className="card-title">Check out my package on PyPI!</h2>
                 <img className="minor-card-image" src="https://img.shields.io/pypi/v/modelcomp"/>
