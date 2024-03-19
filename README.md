@@ -1,4 +1,4 @@
-# modelcomp resutls browser
+# modelcomp results browser
 
 This React app allows you to browse the results of [modelcomp](https://github.com/gilramot/modelcomp), from
 the [modelcomp-appendix](https://github.com/gilramot/modelcomp-appendix) repo. This is the app used to display the
