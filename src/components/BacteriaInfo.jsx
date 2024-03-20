@@ -1,14 +1,9 @@
 import Select from "react-select";
 import { useState } from "react";
-
-const options = [
-    { value: "blues", label: "Blues" },
-    { value: "rock", label: "Rock" },
-    { value: "jazz", label: "Jazz" },
-    { value: "orchestra", label: "Orchestra" },
-];
-
+import './Info.css'
+import {readRemoteFile} from "react-papaparse";
 function BacteriaInfo() {
+
     const customStyles = {
         control: (provided) => ({
             ...provided,
@@ -39,14 +34,17 @@ function BacteriaInfo() {
     const [selectedOption, setSelectedOption] = useState(null);
 
     return (
-        <div>
-            <Select
-                styles={customStyles}
-                defaultValue={selectedOption}
-                onChange={setSelectedOption}
-                options={options}
-            />
-        </div>
+        <>
+            <div className='bacteria-info-container'>
+                <Select
+                    placeholder='Select a bacteria...'
+                    styles={customStyles}
+                    defaultValue={selectedOption}
+                    onChange={setSelectedOption}
+                    options={options}
+                />
+            </div>
+        </>
     );
 }
 
