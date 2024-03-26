@@ -16,10 +16,13 @@
     "react-dom": "^18.2.0",
     "react-papaparse": "^4.4.0",
     "react-router-dom": "^6.22.1",
+    "react-scripts": "^5.0.1",
     "react-select": "^5.8.0",
-    "react-string-format": "^1.2.0"
+    "react-string-format": "^1.2.0",
+    "request": "^2.88.2"
   },
   "devDependencies": {
+    "@esbuild/linux-x64": "^0.20.2",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@vitejs/plugin-react": "^4.2.1",
@@ -28,5 +31,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "vite": "^5.1.0"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.13.0"
   }
 }
