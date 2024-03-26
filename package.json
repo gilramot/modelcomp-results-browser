@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "papaparse": "^5.4.1",
     "react": "^18.2.0",
     "react-collapsible": "^2.10.0",
     "react-dom": "^18.2.0",
+    "react-papaparse": "^4.4.0",
     "react-router-dom": "^6.22.1",
     "react-select": "^5.8.0",
     "react-string-format": "^1.2.0"

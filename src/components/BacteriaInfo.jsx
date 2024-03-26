@@ -1,8 +1,15 @@
 import Select from "react-select";
 import { useState } from "react";
 import './Info.css'
-function BacteriaInfo() {
+import Papa from 'papaparse';
 
+
+function BacteriaInfo() {
+    var csvfile = "../assets/appendix/export/A/A/XGBoost/data/shap_values.csv";
+    const columnNames = Papa.parse(csvfile[0], {
+            header: true,
+            skipEmptyLines: true,
+        })
     const customStyles = {
         control: (provided) => ({
             ...provided,
@@ -40,6 +47,7 @@ function BacteriaInfo() {
                     styles={customStyles}
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
+                    options={columnNames}
                 />
             </div>
         </>
