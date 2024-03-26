@@ -1,7 +1,6 @@
 import Select from "react-select";
 import { useState } from "react";
 import './Info.css'
-import {readRemoteFile} from "react-papaparse";
 function BacteriaInfo() {
 
     const customStyles = {
@@ -41,7 +40,6 @@ function BacteriaInfo() {
                     styles={customStyles}
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
-                    options={options}
                 />
             </div>
         </>
