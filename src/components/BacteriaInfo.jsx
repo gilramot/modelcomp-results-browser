@@ -47,16 +47,15 @@ function BacteriaInfo() {
     const models = ['XGBoost', 'Random Forest', 'Logistic Regression', 'SVM', 'k-NN'];
     const diseases = ['A', '1', '2a', '2b', '3', '4', '5', '6', '7'];
     const explainers = ['feature_importance', 'shap_values'];
+    const selectRef = useRef(null);
+
     const handleChange = (e) => {
         selectedOption = e.value;
-        selectRef.se
         document.querySelectorAll('td.additional-cell').forEach(cell => {
             cell.parentNode.removeChild(cell);
         });
         onFormChange();
     };
-    const selectRef = useRef(null);
-
     const onFormChange = () => {
         for (const i of models) {
             for (const j of diseases) {
@@ -103,9 +102,8 @@ function BacteriaInfo() {
                     placeholder='Select a bacteria...'
                     styles={customStyles}
                     defaultValue={selectedOption}
-                    onChange={handleChange}
+                    onChange={(e) => handleChange(e)}
                     options={columnNames}
-                    value={selectedOptionState}
                 />
             </div>
             <table style={{
