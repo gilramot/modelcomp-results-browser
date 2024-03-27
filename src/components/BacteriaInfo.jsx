@@ -10,9 +10,9 @@ function BacteriaInfo() {
         {
             complete: (results) => {
                 const parsedData = results.data.map(row => ({
-                    label: row[0], // Taking the first value of each row
-                    value: row[0], // Taking the first value of each row
-                }))
+                    label: row[0],
+                    value: row[0]
+                })).sort((a, b) => a.value.localeCompare(b.value));
                 setColumnNames(parsedData.slice(1));
             }
         }
@@ -86,7 +86,7 @@ function BacteriaInfo() {
                                 const red = Math.round(255 * colorRatio);
                                 t.style.color = 'white';
                                 t.style.backgroundColor = `rgb(${red}, 0, ${blue})`;
-
+                                t.style.textAlign = 'center';
                                 document.getElementById(j).parentNode.appendChild(t);
                             }
                         }
