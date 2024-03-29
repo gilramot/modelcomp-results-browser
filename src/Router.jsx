@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Routes, Link} from "react-router-dom";
+import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 
 import GeneralInfo from "./components/GeneralInfo.jsx";
 import DiseaseInfo from "./components/DiseaseInfo.jsx";
@@ -6,6 +6,7 @@ import BacteriaInfo from "./components/BacteriaInfo.jsx";
 
 import './Router.css'
 import './App.css'
+
 function Router() {
     return (
         <>
@@ -30,26 +31,26 @@ function Router() {
                 </div>
 
                 <Routes>
-                        <Route
-                            exact
-                            path="/"
-                            element={<GeneralInfo/>}
-                        />
-                        <Route
-                            exact
-                            path="/diseaseinfo"
-                            element={<DiseaseInfo/>}
-                        />
-                        <Route
-                            exact
-                            path="/bacteriainfo"
-                            element={<BacteriaInfo/>}
-                        />
-                    </Routes>
+                    <Route
+                        exact
+                        path="/"
+                        element={<GeneralInfo/>}
+                    />
+                    <Route
+                        exact
+                        path="/diseaseinfo"
+                        element={<DiseaseInfo/>}
+                    />
+                    <Route
+                        exact
+                        path="/bacteriainfo"
+                        element={<BacteriaInfo/>}
+                    />
+                </Routes>
             </BrowserRouter>
 
         </>
-)
+    )
 }
 
 export default Router

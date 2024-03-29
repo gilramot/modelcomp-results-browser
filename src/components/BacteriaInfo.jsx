@@ -1,8 +1,9 @@
 import Select from "react-select";
 import {useRef, useState} from "react";
 import './Info.css';
-import { readRemoteFile } from "react-papaparse";
+import {readRemoteFile} from "react-papaparse";
 import {format} from "react-string-format";
+
 function BacteriaInfo() {
     const [columnNames, setColumnNames] = useState([]);
     readRemoteFile(
@@ -60,7 +61,7 @@ function BacteriaInfo() {
         for (const i of models) {
             for (const j of diseases) {
                 for (const k of explainers) {
-                    if (k === 'feature_importance' && (i === 'k-NN'||i === 'SVM'|| i==='Logistic Regression')) continue;
+                    if (k === 'feature_importance' && (i === 'k-NN' || i === 'SVM' || i === 'Logistic Regression')) continue;
                     readRemoteFile(
                         format('https://raw.githubusercontent.com/gilramot/modelcomp-appendix/main/export/{0}/{0}/{1}/data/{2}.csv', j, i, k),
                         {
@@ -79,7 +80,7 @@ function BacteriaInfo() {
                                 var t = document.createElement("td");
                                 t.className = 'additional-cell';
                                 t.innerText = format("{0}/{1}", returnVal, parsedData.length);
-                                t.colSpan =  250;
+                                t.colSpan = 250;
 
                                 const colorRatio = returnVal / parsedData.length;
                                 const blue = Math.round(255 * (1 - colorRatio));
@@ -99,11 +100,11 @@ function BacteriaInfo() {
         <div>
             <div className='bacteria-info-container'>
                 <Select ref={selectRef}
-                    placeholder='Select a bacteria...'
-                    styles={customStyles}
-                    defaultValue={selectedOption}
-                    onChange={(e) => handleChange(e)}
-                    options={columnNames}
+                        placeholder='Select a bacteria...'
+                        styles={customStyles}
+                        defaultValue={selectedOption}
+                        onChange={(e) => handleChange(e)}
+                        options={columnNames}
                 />
             </div>
             <table style={{

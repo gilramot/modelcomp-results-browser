@@ -3,24 +3,25 @@ th {
     width: 100px;
     height: 62px;
 }
-.graphTable
-{
+
+.graphTable {
     position: absolute;
-    top:15%;
-    left:30%;
+    top: 15%;
+    left: 30%;
     display: grid;
-    grid-template-columns: repeat(3,400px);
-    grid-template-rows: repeat(2,400px);
-    grid-gap:50px 30px;
+    grid-template-columns: repeat(3, 400px);
+    grid-template-rows: repeat(2, 400px);
+    grid-gap: 50px 30px;
 }
 
-.graph{
+.graph {
     width: 350px;
     height: auto;
     font-size: 30px;
     font-family: sans-serif;
     color: white;
 }
+
 .select {
     margin-top: 125px;
     margin-right: 15px;
@@ -28,6 +29,7 @@ th {
     margin-bottom: 20px;
     display: inline-block;
 }
+
 .select-bacteria {
     margin-top: 25px;
     margin-right: 15px;
@@ -35,11 +37,13 @@ th {
     margin-bottom: 20px;
     display: inline-block;
 }
+
 .select label {
     margin-right: 5px;
     display: block;
     margin-bottom: 5px;
 }
+
 .container {
     margin-left: 100px;
     display: flex;
@@ -53,6 +57,7 @@ th {
     box-sizing: border-box;
     text-align: center;
 }
+
 h4 {
     margin-right: 75px;
 }
@@ -65,11 +70,13 @@ h4 {
     display: block;
     object-fit: contain;
 }
+
 .form {
     position: fixed;
     left: 500px;
     top: 0;
 }
+
 .bacteria-info-container {
     position: absolute;
     top: 150px;

@@ -5,6 +5,7 @@ function hideCard() {
     var cardElement = document.getElementById('card')
     cardElement.style.opacity = 0;
 }
+
 function showCard() {
     var cardElement = document.getElementById('card')
     cardElement.style.opacity = 1;
@@ -14,7 +15,10 @@ function Legend() {
     return (
         <>
             <div className='collapsible'>
-                <Collapsible trigger='Abbreviations & Disease keys&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' triggerClassName='collapsible_closed' triggerOpenedClassName='collapsible_open' onTriggerOpening={hideCard} onTriggerClosing={showCard}>
+                <Collapsible
+                    trigger='Abbreviations & Disease keys&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                    triggerClassName='collapsible_closed' triggerOpenedClassName='collapsible_open'
+                    onTriggerOpening={hideCard} onTriggerClosing={showCard}>
                     <h3>
                         Abbreviations:
                     </h3>

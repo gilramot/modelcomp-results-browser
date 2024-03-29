@@ -6,11 +6,11 @@
     border: none;
     text-align: left;
     outline: none;
-    position:fixed;
-    left:10px;
-    width:360px;
-    font-size:15px;
-    top:25%;
+    position: fixed;
+    left: 10px;
+    width: 360px;
+    font-size: 15px;
+    top: 25%;
 }
 
 .content {
@@ -26,7 +26,8 @@
     content: '\02795';
     float: right;
 }
+
 .collapsible_open:after {
-    float:right;
+    float: right;
     content: '\2796';
 }
