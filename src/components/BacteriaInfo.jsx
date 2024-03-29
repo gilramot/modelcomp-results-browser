@@ -60,7 +60,7 @@ function BacteriaInfo() {
         for (const i of models) {
             for (const j of diseases) {
                 for (const k of explainers) {
-                    if (k === 'feature_importance' && i === 'k-NN') continue;
+                    if (k === 'feature_importance' && (i === 'k-NN'||i === 'SVM'|| i==='Logistic Regression')) continue;
                     readRemoteFile(
                         format('https://raw.githubusercontent.com/gilramot/modelcomp-appendix/main/export/{0}/{0}/{1}/data/{2}.csv', j, i, k),
                         {
@@ -79,7 +79,7 @@ function BacteriaInfo() {
                                 var t = document.createElement("td");
                                 t.className = 'additional-cell';
                                 t.innerText = format("{0}/{1}", returnVal, parsedData.length);
-                                t.colSpan =  150;
+                                t.colSpan =  250;
 
                                 const colorRatio = returnVal / parsedData.length;
                                 const blue = Math.round(255 * (1 - colorRatio));
@@ -115,25 +115,23 @@ function BacteriaInfo() {
                     <th style={{
                         border: 'none'
                     }}></th>
-                    <th colSpan='300'>XGBoost</th>
-                    <th colSpan='300'>Random Forest</th>
-                    <th colSpan='300'>Logistic Regression</th>
-                    <th colSpan='300'>SVM</th>
-                    <th colSpan='150'>k-NN</th>
+                    <th colSpan='500'>XGBoost</th>
+                    <th colSpan='500'>Random Forest</th>
+                    <th colSpan='250'>Logistic Regression</th>
+                    <th colSpan='250'>SVM</th>
+                    <th colSpan='250'>k-NN</th>
                 </tr>
                 <tr>
                     <th style={{
                         border: 'none'
                     }}></th>
-                    <th colSpan='150'>FI</th>
-                    <th colSpan='150'>SHAP</th>
-                    <th colSpan='150'>FI</th>
-                    <th colSpan='150'>SHAP</th>
-                    <th colSpan='150'>FI</th>
-                    <th colSpan='150'>SHAP</th>
-                    <th colSpan='150'>FI</th>
-                    <th colSpan='150'>SHAP</th>
-                    <th colSpan='150'>SHAP</th>
+                    <th colSpan='250'>FI</th>
+                    <th colSpan='250'>SHAP</th>
+                    <th colSpan='250'>FI</th>
+                    <th colSpan='250'>SHAP</th>
+                    <th colSpan='250'>SHAP</th>
+                    <th colSpan='250'>SHAP</th>
+                    <th colSpan='250'>SHAP</th>
                 </tr>
                 <tr>
                     <th id='A'>All Diseases</th>

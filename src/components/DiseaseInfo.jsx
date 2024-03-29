@@ -2,11 +2,6 @@ import './Info.css';
 import {useRef} from 'react';
 import { format } from 'react-string-format';
 import transparent from "./../assets/transparent.png"
-
-function addDefaultSrc(ev){
-    ev.target.src = transparent;
-    document.getElementById(ev.target.id+'-title').innerText = ''
-}
 function DiseaseInfo() {
     const rocRef = useRef(null);
     const prRef = useRef(null);
@@ -15,20 +10,27 @@ function DiseaseInfo() {
 
     const onFormChange = () => {
         if ((trainRef.current.value === '0' || testRef.current.value === '0') && trainRef.current.value !== testRef.current.value) {
-            if (testRef.current.value!=='0') trainRef.current.value = testRef.current.value;
+            if (testRef.current.value !== '0') trainRef.current.value = testRef.current.value;
             else testRef.current.value = trainRef.current.value;
         }
         const trainValue = trainRef.current.value;
         const testValue = testRef.current.value;
         const modelValue = modelRef.current.value;
-        rocRef.current.src = format('https://raw.githubusercontent.com/gilramot/modelcomp-appendix/main/export/{0}/{1}/{2}/plots/roc.png', testValue, trainValue, modelValue);
-        prRef.current.src = format('https://raw.githubusercontent.com/gilramot/modelcomp-appendix/main/export/{0}/{1}/{2}/plots/precision-recall.png', testValue, trainValue, modelValue);
-        fiRef.current.src = format('https://raw.githubusercontent.com/gilramot/modelcomp-appendix/main/export/{0}/{1}/{2}/plots/feature_importance.png', testValue, trainValue, modelValue);
-        shapRef.current.src = format('https://raw.githubusercontent.com/gilramot/modelcomp-appendix/main/export/{0}/{1}/{2}/plots/shap_values.png', testValue, trainValue, modelValue);
         document.getElementById('roc-title').innerText = 'ROC Curve';
         document.getElementById('pr-title').innerText = 'PR Curve';
         document.getElementById('fi-title').innerText = 'Feature Importance';
         document.getElementById('shap-title').innerText = 'SHAP Values';
+        rocRef.current.src = format('https://raw.githubusercontent.com/gilramot/modelcomp-appendix/main/export/{0}/{1}/{2}/plots/roc.png', testValue, trainValue, modelValue);
+        prRef.current.src = format('https://raw.githubusercontent.com/gilramot/modelcomp-appendix/main/export/{0}/{1}/{2}/plots/precision-recall.png', testValue, trainValue, modelValue);
+        if (modelValue === 'Random%20Forest' || modelValue === 'XGBoost') {
+            fiRef.current.src = format('https://raw.githubusercontent.com/gilramot/modelcomp-appendix/main/export/{0}/{1}/{2}/plots/feature_importance.png', testValue, trainValue, modelValue);
+            document.getElementById('fi-title').innerText = 'Feature Importance';
+        }
+        else {
+            fiRef.current.src = transparent;
+            document.getElementById('fi-title').innerText = '';
+        }
+        shapRef.current.src = format('https://raw.githubusercontent.com/gilramot/modelcomp-appendix/main/export/{0}/{1}/{2}/plots/shap_values.png', testValue, trainValue, modelValue);
     }
 
     const trainRef = useRef(null);
@@ -79,26 +81,26 @@ function DiseaseInfo() {
             </div>
             <div className="container">
                 <div className="image">
-                    <img onError={addDefaultSrc} id='roc' ref={rocRef} style={{
+                    <img id='roc' ref={rocRef} style={{
                         marginLeft:50
                     }}/>
                     <h4 id='roc-title'></h4>
                 </div>
                 <div className="image">
-                    <img onError={addDefaultSrc} id='pr' ref={prRef} style={{
+                    <img id='pr' ref={prRef} style={{
                         marginLeft:50
                     }}/>
                     <h4 id='pr-title'></h4>
                 </div>
                 <div className="image">
-                    <img onError={addDefaultSrc} id='fi' ref={fiRef} style={{
+                    <img id='fi' ref={fiRef} style={{
                         width:500,
                         height: "auto"
                     }}/>
                     <h4 id='fi-title'></h4>
                 </div>
                 <div className="image">
-                    <img onError={addDefaultSrc} id='shap' ref={shapRef} style={{
+                    <img id='shap' ref={shapRef} style={{
                         width:500,
                         height: "auto"
                     }}/>
