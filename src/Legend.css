@@ -23,11 +23,13 @@
 }
 
 .collapsible_closed:after {
-    content: '\02795';
+    content: '\2795';
+    font-size: 16px;
     float: right;
 }
 
 .collapsible_open:after {
-    float: right;
     content: '\2796';
+    font-size: 16px;
+    float: right;
 }

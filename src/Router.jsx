@@ -1,8 +1,8 @@
-import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
 
-import GeneralInfo from "./components/GeneralInfo.jsx";
-import DiseaseInfo from "./components/DiseaseInfo.jsx";
-import BacteriaInfo from "./components/BacteriaInfo.jsx";
+import GeneralInfo from './components/GeneralInfo.jsx';
+import DiseaseInfo from './components/DiseaseInfo.jsx';
+import BacteriaInfo from './components/BacteriaInfo.jsx';
 
 import './Router.css'
 import './App.css'
@@ -15,16 +15,16 @@ function Router() {
                     <h2>What would you like to do?</h2>
                     <ul>
                         <li>
-                            <Link to="/">View general plots for the project</Link>
+                            <Link to='/'>View general plots for the project</Link>
                         </li>
                         <li>
-                            <Link to="/diseaseinfo">
+                            <Link to='/diseaseinfo'>
                                 Search for a specific disease
                             </Link>
                         </li>
                         <li>
-                            <Link to="/bacteriainfo">
-                                Search for a specific bacteria
+                            <Link to='/bacteriainfo'>
+                                Search for specific bacteria
                             </Link>
                         </li>
                     </ul>
@@ -33,17 +33,17 @@ function Router() {
                 <Routes>
                     <Route
                         exact
-                        path="/"
+                        path='/'
                         element={<GeneralInfo/>}
                     />
                     <Route
                         exact
-                        path="/diseaseinfo"
+                        path='/diseaseinfo'
                         element={<DiseaseInfo/>}
                     />
                     <Route
                         exact
-                        path="/bacteriainfo"
+                        path='/bacteriainfo'
                         element={<BacteriaInfo/>}
                     />
                 </Routes>

@@ -1,21 +1,23 @@
-import Select from "react-select";
-import {useRef, useState} from "react";
+import Select from 'react-select';
+import { useRef, useState } from 'react';
 import './Info.css';
-import {readRemoteFile} from "react-papaparse";
-import {format} from "react-string-format";
+import { readRemoteFile } from 'react-papaparse';
+import { format } from 'react-string-format';
+import colorbar from './../assets/colorbar.png';
 
-function BacteriaInfo() {
+export default function BacteriaInfo() {
     const [columnNames, setColumnNames] = useState([]);
     readRemoteFile(
         'https://raw.githubusercontent.com/gilramot/modelcomp-appendix/main/export/A/A/XGBoost/data/shap_values.csv',
         {
             complete: (results) => {
-                const parsedData = results.data.map(row => ({
+                const parsedData = results.data.slice(1).
+                map((row) => ({
                     label: row[0],
-                    value: row[0]
+                    value: row[0],
                 })).sort((a, b) => a.value.localeCompare(b.value));
                 setColumnNames(parsedData.slice(1));
-            }
+            },
         }
     );
     const customStyles = {
@@ -52,7 +54,7 @@ function BacteriaInfo() {
 
     const handleChange = (e) => {
         selectedOption = e.value;
-        document.querySelectorAll('td.additional-cell').forEach(cell => {
+        document.querySelectorAll('td.additional-cell').forEach((cell) => {
             cell.parentNode.removeChild(cell);
         });
         onFormChange();
@@ -61,25 +63,34 @@ function BacteriaInfo() {
         for (const i of models) {
             for (const j of diseases) {
                 for (const k of explainers) {
-                    if (k === 'feature_importance' && (i === 'k-NN' || i === 'SVM' || i === 'Logistic Regression')) continue;
+                    if (k === 'feature_importance' && (i === 'k-NN' || i === 'SVM' || i === 'Logistic Regression'))
+                        continue;
                     readRemoteFile(
-                        format('https://raw.githubusercontent.com/gilramot/modelcomp-appendix/main/export/{0}/{0}/{1}/data/{2}.csv', j, i, k),
+                        format(
+                            'https://raw.githubusercontent.com/gilramot/modelcomp-appendix/main/export/{0}/{0}/{1}/data/{2}.csv',
+                            j,
+                            i,
+                            k
+                        ),
                         {
                             complete: (results) => {
-                                const parsedData = results.data.slice(1).map(row => ({
-                                    label: row[0],
-                                    value: parseFloat(row[1]),
-                                })).sort((a, b) => b.value - a.value);
-                                let returnVal = "";
+                                const parsedData = results.data
+                                    .slice(1)
+                                    .map((row) => ({
+                                        label: row[0],
+                                        value: parseFloat(row[1]),
+                                    }))
+                                    .sort((a, b) => b.value - a.value);
+                                let returnVal = '';
                                 parsedData.forEach(function callback(row, index) {
                                     if (selectedOption === row.label) {
                                         returnVal = index + 1;
                                         return;
                                     }
                                 });
-                                var t = document.createElement("td");
+                                var t = document.createElement('td');
                                 t.className = 'additional-cell';
-                                t.innerText = format("{0}/{1}", returnVal, parsedData.length);
+                                t.innerText = format('{0}/{1}', returnVal, parsedData.length);
                                 t.colSpan = 250;
 
                                 const colorRatio = returnVal / parsedData.length;
@@ -89,82 +100,85 @@ function BacteriaInfo() {
                                 t.style.backgroundColor = `rgb(${red}, 0, ${blue})`;
                                 t.style.textAlign = 'center';
                                 document.getElementById(j).parentNode.appendChild(t);
-                            }
+                            },
                         }
-                    )
+                    );
                 }
             }
         }
-    }
+    };
     return (
-        <div>
+        <>
             <div className='bacteria-info-container'>
-                <Select ref={selectRef}
-                        placeholder='Select a bacteria...'
-                        styles={customStyles}
-                        defaultValue={selectedOption}
-                        onChange={(e) => handleChange(e)}
-                        options={columnNames}
+                <Select
+                    ref={selectRef}
+                    placeholder='Select bacteria...'
+                    styles={customStyles}
+                    defaultValue={selectedOption}
+                    onChange={(e) => handleChange(e)}
+                    options={columnNames}
                 />
             </div>
-            <table style={{
-                marginLeft: '400px',
-                marginTop: '150px'
-            }}>
-                <tbody>
-                <tr>
-                    <th style={{
-                        border: 'none'
-                    }}></th>
-                    <th colSpan='500'>XGBoost</th>
-                    <th colSpan='500'>Random Forest</th>
-                    <th colSpan='250'>Logistic Regression</th>
-                    <th colSpan='250'>SVM</th>
-                    <th colSpan='250'>k-NN</th>
-                </tr>
-                <tr>
-                    <th style={{
-                        border: 'none'
-                    }}></th>
-                    <th colSpan='250'>FI</th>
-                    <th colSpan='250'>SHAP</th>
-                    <th colSpan='250'>FI</th>
-                    <th colSpan='250'>SHAP</th>
-                    <th colSpan='250'>SHAP</th>
-                    <th colSpan='250'>SHAP</th>
-                    <th colSpan='250'>SHAP</th>
-                </tr>
-                <tr>
-                    <th id='A'>All Diseases</th>
-                </tr>
-                <tr>
-                    <th id='1'>1</th>
-                </tr>
-                <tr>
-                    <th id='2a'>2a</th>
-                </tr>
-                <tr>
-                    <th id='2b'>2b</th>
-                </tr>
-                <tr>
-                    <th id='3'>3</th>
-                </tr>
-                <tr>
-                    <th id='4'>4</th>
-                </tr>
-                <tr>
-                    <th id='5'>5</th>
-                </tr>
-                <tr>
-                    <th id='6'>6</th>
-                </tr>
-                <tr>
-                    <th id='7'>7</th>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    );
+            <div style={{display: 'flex'}}>
+                <img
+                    src={colorbar}
+                    style={{
+                        height: '800px',
+                        marginLeft: '150px',
+                        marginTop: '200px',
+                    }}
+                    alt='Color bar'
+                />
+                <table style={{marginLeft: '100px', marginTop: '100px'}}>
+                    <tbody>
+                    <tr>
+                        <th style={{border: 'none'}}></th>
+                        <th colSpan='500'>XGBoost</th>
+                        <th colSpan='500'>Random Forest</th>
+                        <th colSpan='250'>Logistic Regression</th>
+                        <th colSpan='250'>SVM</th>
+                        <th colSpan='250'>k-NN</th>
+                    </tr>
+                    <tr>
+                        <th style={{border: 'none'}}></th>
+                        <th colSpan='250'>FI</th>
+                        <th colSpan='250'>SHAP</th>
+                        <th colSpan='250'>FI</th>
+                        <th colSpan='250'>SHAP</th>
+                        <th colSpan='250'>SHAP</th>
+                        <th colSpan='250'>SHAP</th>
+                        <th colSpan='250'>SHAP</th>
+                    </tr>
+                    <tr>
+                        <th id='A'>All Diseases</th>
+                    </tr>
+                    <tr>
+                        <th id='1'>1</th>
+                    </tr>
+                    <tr>
+                        <th id='2a'>2a</th>
+                    </tr>
+                    <tr>
+                        <th id='2b'>2b</th>
+                    </tr>
+                    <tr>
+                        <th id='3'>3</th>
+                    </tr>
+                    <tr>
+                        <th id='4'>4</th>
+                    </tr>
+                    <tr>
+                        <th id='5'>5</th>
+                    </tr>
+                    <tr>
+                        <th id='6'>6</th>
+                    </tr>
+                    <tr>
+                        <th id='7'>7</th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </>
+    )
 }
-
-export default BacteriaInfo;
