@@ -33,3 +33,12 @@
     margin: 0;
     color: #a1a1a1;
 }
+.big-number {
+    font-size: 3em; /* Adjust the size as needed */
+    font-weight: bold;
+    margin-right: 10px; /* Adjust spacing between number and text */
+}
+
+.small-text {
+    font-size: 0.8em; /* Adjust the size as needed */
+}
