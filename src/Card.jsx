@@ -13,10 +13,10 @@ function Card() {
                 visibility: isShown ? 'hidden' : 'visible'
             }}>
                 <span className="big-number">313</span>
-                <span className="small-text">types of bacteria (1938 total)</span>
+                <span className="small-text">used features (1938 total)</span>
                 <br/>
                 <span className="big-number">1818</span>
-                <span className="small-text">humans tested</span>
+                <span className="small-text">samples</span>
             </div>
             <div id='card' className='card' style={{visibility: isShown ? 'hidden' : 'visible'}}>
             <QRCode bgColor='#1a1a1a' fgColor='#a1a1a1' value='https://pypi.org/project/modelcomp/'
