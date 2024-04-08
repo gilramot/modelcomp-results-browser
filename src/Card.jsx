@@ -9,7 +9,7 @@ function Card() {
             <div style={{
                 position: "fixed",
                 left: 20,
-                top: 400,
+		top: 325,
                 visibility: isShown ? 'hidden' : 'visible'
             }}>
                 <span className="big-number">313</span>
@@ -17,6 +17,15 @@ function Card() {
                 <br/>
                 <span className="big-number">1818</span>
                 <span className="small-text">samples</span>
+	    	<br/>
+	    	<span className="big-number">5</span>
+	    	<span className="small-text">models</span>
+	    	<br/>
+	    	<span className="big-number">2</span>
+	    	<span className="small-text">validation methods</span>
+	    	<br/>
+	    	<span className="big-number">2</span>
+	    	<span className="small-text">explainers</span>
             </div>
             <div id='card' className='card' style={{visibility: isShown ? 'hidden' : 'visible'}}>
             <QRCode bgColor='#1a1a1a' fgColor='#a1a1a1' value='https://pypi.org/project/modelcomp/'
