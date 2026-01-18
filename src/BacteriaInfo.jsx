@@ -1,25 +1,24 @@
 import Select from 'react-select';
 import { useRef, useState } from 'react';
 import './Info.css';
-import { readRemoteFile } from 'react-papaparse';
 import { format } from 'react-string-format';
 import colorbar from './../assets/colorbar.png';
-
+import {readRemoteFile} from 'react-papaparse';
 export default function BacteriaInfo() {
     const [columnNames, setColumnNames] = useState([]);
     readRemoteFile(
-        'https://raw.githubusercontent.com/gilramot/modelcomp-appendix/main/export/A/A/XGBoost/data/shap_values.csv',
+        '/modelcomp-appendix/results/v0.0.1a1/export/A/A/XGBoost/data/shap_values.csv',
         {
             complete: (results) => {
-                const parsedData = results.data.slice(1).
-                map((row) => ({
+                const parsedData = results.data.slice(1).map((row) => ({
                     label: row[0],
                     value: row[0],
                 })).sort((a, b) => a.value.localeCompare(b.value));
                 setColumnNames(parsedData.slice(1));
-            },
-        }
+            }
+        },
     );
+
     const customStyles = {
         control: (provided) => ({
             ...provided,
@@ -67,7 +66,7 @@ export default function BacteriaInfo() {
                         continue;
                     readRemoteFile(
                         format(
-                            'https://raw.githubusercontent.com/gilramot/modelcomp-appendix/main/export/{0}/{0}/{1}/data/{2}.csv',
+                            '/modelcomp-appendix/results/v0.0.1a1/export/{0}/{0}/{1}/data/{2}.csv',
                             j,
                             i,
                             k

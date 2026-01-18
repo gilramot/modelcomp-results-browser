@@ -2,7 +2,6 @@ import './Info.css';
 import {useRef} from 'react';
 import {format} from 'react-string-format';
 import transparent from './../assets/transparent.png'
-
 function DiseaseInfo() {
     const rocRef = useRef(null);
     const prRef = useRef(null);
